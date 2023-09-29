@@ -1,0 +1,25 @@
+{
+  "name": "playwright_cucumber_automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "node src/helper/init.js",
+    "test": "cucumber-js test || exit 0",
+    "posttest": "node src/helper/report.js",
+    "test:failed": "cucumber-js -p rerun @rerun.txt"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^9.5.1",
+    "@playwright/test": "^1.38.1",
+    "@types/node": "^20.6.5",
+    "multiple-cucumber-html-reporter": "^3.5.0"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.1",
+    "winston": "^3.10.0"
+  }
+}
