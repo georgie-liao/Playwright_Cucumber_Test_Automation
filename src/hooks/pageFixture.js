@@ -1,8 +1,10 @@
-const { page } = require('@playwright/test');
+// const { Page } = require('@playwright/test');
 
-const pageFixture = { 
+// let page = Page;
+
+const fixture = { 
     page: undefined,
     logger: undefined
 };
 
-module.exports = { pageFixture };
+module.exports = { fixture };
