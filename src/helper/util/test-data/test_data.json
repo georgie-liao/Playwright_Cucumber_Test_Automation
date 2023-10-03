@@ -1,0 +1,20 @@
+{
+    "homePageULR": "https://bookcart.azurewebsites.net/",
+    "loginPageULR": "https://bookcart.azurewebsites.net/login",
+    "registerPageURL": "https://bookcart.azurewebsites.net/register",
+    "allCategories":[
+        "All Categories",
+        "Biography",
+        "Fiction",
+        "Mysetry",
+        "Fantasy",
+        "Romance"
+    ],
+    "registerUser":{
+            "firstName": "George",
+            "lastName": "L ",
+            "username":"george",
+            "password": "P@ssw0rd123",
+            "confirmPassword": "P@ssw0rd123"
+    }
+}

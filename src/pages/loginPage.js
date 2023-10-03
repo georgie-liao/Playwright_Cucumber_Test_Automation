@@ -1,35 +1,40 @@
 const { expect } = require('@playwright/test');
 const PlaywrightWrapper = require('../helper/wrapper/PlaywrightWrappers');
+const data = require('../helper/util/test-data/test_data.json');
+
 
 class LoginPage {
     constructor(page) {
         this.page = page;
         this.base = new PlaywrightWrapper(page);
         this.Elements = {
-            userInput: 'Username',
-            passwordInput: 'Password',
+            userInput: "input[formcontrolname='username']",
+            passwordInput: "input[formcontrolname='password']",
             loginBtn: 'button[color="primary"]',
+            userNameDisplay: "xpath=//button[contains(@class,'mat-focus-indicator mat-menu-trigger')]//span[1]",
             errorMessage: 'alert'
         };
     }
 
-    async navigateToLoginPage() {
-        await this.base.goto('/login');
-        await expect(this.page).toHaveTitle('BookCart');
-    }
+    // async navigateToLoginPage() {
+    //     await this.base.goto(data.loginPageULR);
+    //     await expect(this.page).toHaveTitle('BookCart');
+    // }
 
     async enterUserName(user) {
-        const userInput = await this.page.locator(`[label="${this.Elements.userInput}"]`);
-        await userInput.fill(user);
+        await this.page.locator(this.Elements.userInput).fill(user);
     }
 
     async enterPassword(password) {
-        const passwordInput = await this.page.locator(`[label="${this.Elements.passwordInput}"]`);
-        await passwordInput.fill(password);
+        await this.page.locator(this.Elements.passwordInput).fill(password);
     }
 
     async clickLoginButton() {
-        await this.base.waitAndClick(`[color='primary']`);
+        await this.base.waitAndClick(this.Elements.loginBtn);
+    }
+
+    async verifyLoginSuccesseful () {
+        await expect(this.page.locator(this.Elements.userNameDisplay)).toContainText('georgel');
     }
 
     async getErrorMessage() {

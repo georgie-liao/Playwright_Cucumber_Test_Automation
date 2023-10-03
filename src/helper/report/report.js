@@ -4,14 +4,14 @@ report.generate({
     jsonDir: "test-results",
     reportPath: "test-results/reports/",
     reportName: "Playwright Test Automation Report",
-    pageTitle: "User Login Portal test report",
+    pageTitle: "Online Book Store Test Report",
     displayDuration: false,
     metadata: {
         browser: {
             name: "chrome",
             version: "112",
         },
-        device: "George - PC",
+        device: "George-PC",
         platform: {
             name: "Windows",
             version: "11",
@@ -20,7 +20,7 @@ report.generate({
     customData: {
         title: "Test Info",
         data: [
-            { label: "Project", value: "User Login Portal" },
+            { label: "Project", value: "Online Book Store" },
             { label: "Release", value: "1.2.3" },
             { label: "Cycle", value: "Smoke-1" }
         ],
