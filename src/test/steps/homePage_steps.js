@@ -2,7 +2,7 @@ const { Given, When, Then, setDefaultTimeout } = require('@cucumber/cucumber');
 const { expect } = require('@playwright/test');
 const { fixture } = require('../../hooks/pageFixture');
 const Assert = require('../../helper/wrapper/assert');
-const HomePage = require('../../pages/homePage');
+const HomePage = require('../../pages/home_page');
 
 
 setDefaultTimeout(60 * 1000 * 2);

@@ -12,7 +12,7 @@ class LoginPage {
             passwordInput: "input[formcontrolname='password']",
             loginBtn: 'button[color="primary"]',
             userNameDisplay: "xpath=//button[contains(@class,'mat-focus-indicator mat-menu-trigger')]//span[1]",
-            errorMessage: 'alert'
+            errorMessage: '#mat-error-0'
         };
     }
 
@@ -38,8 +38,7 @@ class LoginPage {
     }
 
     async getErrorMessage() {
-        const errorMessage = await this.page.locator(`[role="${this.Elements.errorMessage}"]`);
-        return errorMessage.textContent();
+        await expect(this.page.locator(this.Elements.errorMessage)).toHaveText('Username or Password is incorrect.');
     }
 
     async loginUser(user, password) {

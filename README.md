@@ -37,6 +37,12 @@ These tests cover end-to-end scenarios:
 
 *Note: The entire `test-results` folder or individual files can be safely deleted.*
 
+
+## Running Tests:
+
+Execute tests via the command line using the following command: npm test.
+
+
 ---end---
 
 

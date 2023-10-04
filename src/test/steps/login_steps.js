@@ -2,22 +2,12 @@ const { Given, When, Then, setDefaultTimeout } = require('@cucumber/cucumber');
 const { expect } = require('@playwright/test');
 const { fixture } = require('../../hooks/pageFixture');
 const Assert = require('../../helper/wrapper/assert');
-const LogInPage = require('../../pages/loginPage');
+const LogInPage = require('../../pages/login_page');
 
 setDefaultTimeout(60 * 1000 * 2);
 
 let loginPage;
 let assert;
-
-// Given('User navigates to the Login in Page', async function () {
-//     loginPage = new LogInPage(fixture.page);
-//     assert = new Assert(fixture.page);
-//     await loginPage.navigateToLoginPage();
-// });
-
-// Given('User click on the login link', async function () {
-//     await fixture.page.locator("//span[text()='Login']").click();
-// });
 
 Given('User enter the username as {string}', async function (username) {
     loginPage = new LogInPage(fixture.page);

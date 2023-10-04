@@ -4,7 +4,7 @@ const { fixture } = require('../../hooks/pageFixture');
 
 setDefaultTimeout(60 * 1000 * 2);
 
-Given('user search for a {string}', async function (book) {
+Given('user search for book {string}', async function (book) {
     fixture.logger.info('Searching for a book: ' + book);
     await fixture.page.locator("input[type='search']").type(book);
     await fixture.page.waitForTimeout(2000);

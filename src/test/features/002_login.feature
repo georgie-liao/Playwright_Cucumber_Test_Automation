@@ -10,21 +10,20 @@ However, if I input incorrect username or password details, the sign-in process 
   Background: 
     Given User navigates to the application
     And User click on the login link
-@test
-  Scenario: Login should be success
+
+  Scenario: Login should be successful with valid credentials
     And User enter the username as "Georgel"
     And User enter the password as "P@ssw0rd123"
     When User click on the login button
     Then Login should be success
 
-  Scenario: Login with invalid username
+  Scenario: Login should fail with wrong username
     Given User enter the username as "wrong-username" 
     And User enter the password as "P@ssw0rd123"
     When User click on the login button
     Then Login should fail
 
-
-    Scenario: Login with invalid password
+    Scenario: Login should fail with wrong password
     Given User enter the username as "Georgel" 
     And User enter the password as "wrong-password"
     When User click on the login button
