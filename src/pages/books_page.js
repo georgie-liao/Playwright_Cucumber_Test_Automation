@@ -31,6 +31,7 @@ class BooksPage {
         //enter book name in the search input
         await this.page.locator(this.Elements._searchInput).fill(book);
 
+        //wait for search result
         await this.page.waitForTimeout(2000);
 
         //assert book name is displaying in the search result
@@ -47,17 +48,19 @@ class BooksPage {
     async addBookToCart() {
         //add the book to cart
         await this.page.click(this.Elements._addToCartBtn);
+    }
 
+    async verifyMessage(message) {
         //assert the booked to cart confirmation toast message
         const toast = this.page.locator(this.Elements._snackBar);
         await expect(toast).toBeVisible();
-        await expect(toast).toHaveText('One Item added to cart');
+        await expect(toast).toHaveText(message);
     }
 
-    async verifyCartBadge() {
+    async verifyCartBadge(number) {
         //Verify the number shown on the cart badge i
         const badgeCount = await this.page.locator(this.Elements._badge).textContent();
-        await expect(badgeCount).toEqual(1);
+        await expect(badgeCount).toEqual(number);
     }
 }
 

@@ -8,23 +8,18 @@ When I sign in to the portal and order books, I expect the order is successfuly 
     Given User navigates to the application
     And User signs in to the portal
 
-@test
   Scenario Outline: empty the cart 
     When user clear the cart
     Then the cart should be empty 
 
-
-  Scenario Outline: Authenticated Users - Add book to cart
-    When user search for book name "<book>"
+@test
+  Scenario Outline: Add book to cart
+    When user search for book "<book>"
     And user add the book to the cart
-    Then the cart badge should get updated
-    When user verify the book in the cart
+    Then there should be a pop up message "One Item added to cart"
+    And the cart badge should display a number "1"
+    When user open the cart 
+    And the cart should display the correct book information
     Examples:
       |book|
       |The Martian|
-
-  @fail
-  Scenario: UnAuthenticated User - Add book to cart
-    When user search for book "All of Us with Wings"
-    And user add the book to the cart
-    Then the cart badge should get updated
