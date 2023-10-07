@@ -1,6 +1,6 @@
 module.exports = {
     default: {
-        tags: "@test",
+        tags: "@test" || "",
         formatOptions: {
             snippetInterface: "async-await"
         },

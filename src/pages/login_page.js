@@ -8,6 +8,7 @@ class LoginPage {
         this.page = page;
         this.base = new PlaywrightWrapper(page);
         this.Elements = {
+            loginLink:"button[class='mat-focus-indicator mat-button mat-button-base ng-star-inserted'] span[class='mat-button-wrapper']",
             userInput: "input[formcontrolname='username']",
             passwordInput: "input[formcontrolname='password']",
             loginBtn: 'button[color="primary"]',
@@ -16,11 +17,9 @@ class LoginPage {
         };
     }
 
-    // async navigateToLoginPage() {
-    //     await this.base.goto(data.loginPageULR);
-    //     await expect(this.page).toHaveTitle('BookCart');
-    // }
-
+    async clickLoginLink() {
+        await this.page.locator(this.Elements.loginLink).click();
+    }
     async enterUserName(user) {
         await this.page.locator(this.Elements.userInput).fill(user);
     }
@@ -41,10 +40,14 @@ class LoginPage {
         await expect(this.page.locator(this.Elements.errorMessage)).toHaveText('Username or Password is incorrect.');
     }
 
-    async loginUser(user, password) {
+    async userLogin() {
+        const user = data.existingUser.username;
+        const password = data.existingUser.password;
+        await this.clickLoginLink();
         await this.enterUserName(user);
         await this.enterPassword(password);
         await this.clickLoginButton();
+        await this.verifyLoginSuccesseful();
     }
 }
 

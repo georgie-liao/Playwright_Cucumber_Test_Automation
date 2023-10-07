@@ -10,6 +10,10 @@
         "Fantasy",
         "Romance"
     ],
+    "existingUser":{
+        "username":"georgel",
+        "password": "P@ssw0rd123"
+    },
     "registerUser":{
             "firstName": "George",
             "lastName": "L ",

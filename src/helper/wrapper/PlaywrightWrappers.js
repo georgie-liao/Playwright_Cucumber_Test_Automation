@@ -13,6 +13,13 @@ class PlaywrightWrapper {
         });
     }
 
+    async waitToBeVisible(locator) {
+        const element = await this.page.locator(locator);
+        await element.waitFor({
+            state: 'visible'
+        });
+    }
+
     async waitAndClick(locator) {
         const element = await this.page.locator(locator);
         await element.waitFor({

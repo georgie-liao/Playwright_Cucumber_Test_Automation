@@ -1,4 +1,4 @@
-const { expect } = require('@playwright/test');
+const { expect, Page } = require('@playwright/test');
 const PlaywrightWrapper = require('../helper/wrapper/PlaywrightWrappers');
 
 class HeaderPage {
