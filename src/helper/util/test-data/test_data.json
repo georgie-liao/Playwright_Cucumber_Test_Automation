@@ -22,10 +22,19 @@
             "confirmPassword": "P@ssw0rd123"
     },
      "book_theMartian":{
-            "imageSource": "https://bookcart.azurewebsites.net/Upload/5b7162d6-2780-461b-be6f-e4debac083ad18007564.jpg",
+            "imageSource": "/Upload/5b7162d6-2780-461b-be6f-e4debac083ad18007564.jpg",
             "title": "The Martian",
             "price": "₹321.00",
-            "quantity": 1,
-            "totalPrice": "₹321.00"
-        }
+            "quantity": "1",
+            "totalPrice": "₹321.00",
+            "cartTotal":"₹321.00"
+        },
+    "shippingAddress":{
+        "name": "George L",
+        "address1": "45 Queen Street",
+        "address2": "Auckland Central",
+        "postCode": 100100,
+        "state": "Auckland"
+    }
+        
 }

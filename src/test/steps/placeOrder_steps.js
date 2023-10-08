@@ -43,14 +43,43 @@ Then('the cart badge should display a number {string}', async function (number) 
 
 When('the cart should display the correct book information', async function () {
     await cartPage.verifyCartItems(
-        data.book_theMartian.imageSource,
         data.book_theMartian.title,
         data.book_theMartian.price,
         data.book_theMartian.quantity,
-        data.book_theMartian.totalPrice
+        data.book_theMartian.totalPrice,
+        data.book_theMartian.cartTotal
+    );
+});
+
+When('user click on Checkout', async function () {
+    await cartPage.checkout();
+});
+
+When('user enter shipping address', async function () {
+    await cartPage.enterAddress(
+        data.shippingAddress.name,
+        data.shippingAddress.address1,
+        data.shippingAddress.address2,
+        data.shippingAddress.postCode,
+        data.shippingAddress.state
     );
 });
  
+When('the Order Summary should display correct information', async function () {
+    await cartPage.verifyOrderSummary(
+        data.book_theMartian.title,
+        data.book_theMartian.price,
+        data.book_theMartian.quantity,
+        data.book_theMartian.totalPrice,
+        data.book_theMartian.cartTotal
+    );
+});
+
+
+When('user click on Place Order', async function () {
+    await cartPage.placeOrder();
+});
+
 Then('user clear the cart', async function () {
     cartPage = new CartPage(fixture.page)
     await  cartPage.clearCart();

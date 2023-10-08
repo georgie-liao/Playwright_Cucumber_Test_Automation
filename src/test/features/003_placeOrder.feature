@@ -18,8 +18,17 @@ When I sign in to the portal and order books, I expect the order is successfuly 
     And user add the book to the cart
     Then there should be a pop up message "One Item added to cart"
     And the cart badge should display a number "1"
+
     When user open the cart 
-    And the cart should display the correct book information
+    Then the cart should display the correct book information
+
+    When user click on Checkout
+    And user enter shipping address
+    Then the Order Summary should display correct information
+
+    When user click on Place Order 
+    # Then order should be placed successfuly
+
     Examples:
       |book|
       |The Martian|
