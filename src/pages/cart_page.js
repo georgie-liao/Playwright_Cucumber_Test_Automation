@@ -29,7 +29,7 @@ class CartPage {
             _summaryMRP: "table[class='table'] td:nth-child(3)",
             _summaryTotal: "table[class='table'] td:nth-child(4)",
             _grandTotal: "tfoot[class='table'] th:nth-child(1)",
-            _placeOrderBtn: "button[type='submit'] span[class='mat-button-wrapper']"
+            _placeOrderBtn: "button[type='submit'] span[class='mat-button-wrapper']",
         };
     }
 
@@ -67,23 +67,37 @@ class CartPage {
     }
 
     async verifyOrderSummary(title, price, quantity, total, grandTotal) {
-        //verify book information in the cart
+        //verify book title in the order summary
         const bookTitle = await this.page.locator(this.Elements._sumamaryTitle).textContent();
-        const bookPrice = await this.page.locator(this.Elements._summaryQuantity).textContent();
-        const bookQuantity = await this.page.locator(this.Elements._summaryMRP).textContent();
-        const totalBookPrice = await this.page.locator(this.Elements._summaryTotal).textContent();
-        const cartTotalPrice = await this.page.locator(this.Elements._grandTotal).textContent();
- 
         await expect(bookTitle).toEqual(title);
+
+        //verify book price in the order summary
+        const bookPrice = await this.page.locator(this.Elements._summaryQuantity).textContent();
         await expect(bookPrice).toEqual(price);
+
+        //verify quantity of book in the order summary
+        const bookQuantity = await this.page.locator(this.Elements._summaryMRP).textContent();
         await expect(bookQuantity).toEqual(quantity)
+
+        //verify total book price in the order summary
+        const totalBookPrice = await this.page.locator(this.Elements._summaryTotal).textContent();
         await expect(totalBookPrice).toEqual(total);
+
+        //verify total amount price of the cart
+        const cartTotalPrice = await this.page.locator(this.Elements._grandTotal).textContent();
         await expect(cartTotalPrice).toEqual(grandTotal)
      }
 
      async placeOrder(){
         //click on the CheckOut button
         await this.page.locator(this.Elements._placeOrderBtn).click();
+    }
+
+    async getConfirmationMessage(){
+        //assert the order placed successfully confirmation message
+        const toast = this.page.locator(this.Elements._snackBar);
+        await expect(toast).toBeVisible();
+        await expect(toast).toHaveText('Order placed successfully!!!');
     }
 
     async clearCart() {

@@ -7,7 +7,7 @@ class HomePage {
         this.page = page;
         this.base = new PlaywrightWrapper(page);
         this.Elements = {
-            loginLink: '//span[text()="Login"]'
+            _loginLink: '//span[text()="Login"]'
         };
     }
 
@@ -17,7 +17,7 @@ class HomePage {
     }
 
     async clickLoginButton() {
-        await this.base.waitAndClick(this.Elements.loginLink);
+        await this.base.waitAndClick(this.Elements._loginLink);
     }
 
 }

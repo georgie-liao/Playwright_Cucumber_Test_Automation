@@ -8,36 +8,36 @@ class LoginPage {
         this.page = page;
         this.base = new PlaywrightWrapper(page);
         this.Elements = {
-            loginLink:"button[class='mat-focus-indicator mat-button mat-button-base ng-star-inserted'] span[class='mat-button-wrapper']",
-            userInput: "input[formcontrolname='username']",
-            passwordInput: "input[formcontrolname='password']",
-            loginBtn: 'button[color="primary"]',
-            userNameDisplay: "xpath=//button[contains(@class,'mat-focus-indicator mat-menu-trigger')]//span[1]",
-            errorMessage: '#mat-error-0'
+            _loginLink:"button[class='mat-focus-indicator mat-button mat-button-base ng-star-inserted'] span[class='mat-button-wrapper']",
+            _userInput: "input[formcontrolname='username']",
+            _passwordInput: "input[formcontrolname='password']",
+            _loginBtn: 'button[color="primary"]',
+            _userNameDisplay: "xpath=//button[contains(@class,'mat-focus-indicator mat-menu-trigger')]//span[1]",
+            _errorMessage: '#mat-error-0'
         };
     }
 
     async clickLoginLink() {
-        await this.page.locator(this.Elements.loginLink).click();
+        await this.page.locator(this.Elements._loginLink).click();
     }
     async enterUserName(user) {
-        await this.page.locator(this.Elements.userInput).fill(user);
+        await this.page.locator(this.Elements._userInput).fill(user);
     }
 
     async enterPassword(password) {
-        await this.page.locator(this.Elements.passwordInput).fill(password);
+        await this.page.locator(this.Elements._passwordInput).fill(password);
     }
 
     async clickLoginButton() {
-        await this.base.waitAndClick(this.Elements.loginBtn);
+        await this.base.waitAndClick(this.Elements._loginBtn);
     }
 
     async verifyLoginSuccesseful () {
-        await expect(this.page.locator(this.Elements.userNameDisplay)).toContainText('georgel');
+        await expect(this.page.locator(this.Elements._userNameDisplay)).toContainText('georgel');
     }
 
     async getErrorMessage() {
-        await expect(this.page.locator(this.Elements.errorMessage)).toHaveText('Username or Password is incorrect.');
+        await expect(this.page.locator(this.Elements._errorMessage)).toHaveText('Username or Password is incorrect.');
     }
 
     async userLogin() {

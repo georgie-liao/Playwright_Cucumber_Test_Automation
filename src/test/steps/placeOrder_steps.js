@@ -4,6 +4,7 @@ const { fixture } = require('../../hooks/pageFixture');
 const LogInPage = require('../../pages/login_page');
 const BooksPage = require('../../pages/books_page');
 const CartPage = require('../../pages/cart_page');
+const OrderHistoryPage = require('../../pages/orderHistory_page');
 const data = require('../../helper/util/test-data/test_data.json');
 
 setDefaultTimeout(60 * 1000 * 2);
@@ -11,6 +12,7 @@ setDefaultTimeout(60 * 1000 * 2);
 let loginPage;
 let booksPage;
 let cartPage;
+let orderHistoryPage;
 
 Given('User signs in to the portal', async function () {
     loginPage = new LogInPage(fixture.page);
@@ -78,6 +80,19 @@ When('the Order Summary should display correct information', async function () {
 
 When('user click on Place Order', async function () {
     await cartPage.placeOrder();
+});
+
+When('order should be placed successfuly', async function () {
+    await cartPage.getConfirmationMessage();
+});
+
+When('order history details are shown correctly ', async function () {
+    orderHistoryPage = new OrderHistoryPage(fixture.page);
+    await orderHistoryPage.verifyOrderSummary(
+        data.book_theMartian.title,
+        data.book_theMartian.quantity,
+        data.book_theMartian.cartTotal
+    );
 });
 
 Then('user clear the cart', async function () {

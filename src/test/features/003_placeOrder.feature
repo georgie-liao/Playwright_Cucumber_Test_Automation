@@ -13,7 +13,7 @@ When I sign in to the portal and order books, I expect the order is successfuly 
     Then the cart should be empty 
 
 @test
-  Scenario Outline: Add book to cart
+  Scenario Outline: Authenticated user place order tests
     When user search for book "<book>"
     And user add the book to the cart
     Then there should be a pop up message "One Item added to cart"
@@ -27,7 +27,8 @@ When I sign in to the portal and order books, I expect the order is successfuly 
     Then the Order Summary should display correct information
 
     When user click on Place Order 
-    # Then order should be placed successfuly
+    Then order should be placed successfuly
+    And order history details are shown correctly 
 
     Examples:
       |book|
